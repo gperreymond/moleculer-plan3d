@@ -1,23 +1,39 @@
 const DbService = require('moleculer-db')
 const SqlAdapter = require('moleculer-db-adapter-sequelize')
-const Sequelize = require('sequelize')
+const { DataTypes } = require('sequelize')
+const { filter } = require('lodash')
 
 module.exports = {
   name: 'projects',
   mixins: [DbService],
   adapter: new SqlAdapter('sqlite://data.sqlite'),
-  rest: true,
+  settings: {
+    idField: 'id',
+    fields: ['id', 'name', 'description', 'walls'],
+    populates: {
+      async walls (_, docs, __, ctx) {
+        const walls = await ctx.broker.call('walls.find', { excludeFields: 'projectId' })
+        docs.map(doc => {
+          doc.walls = filter(walls, function (o) { return o.id === doc.id })
+          return true
+        })
+        return true
+      }
+    }
+  },
   model: {
     name: 'project',
     define: {
       name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         unique: true,
         allowNull: false
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: true
       }
     },
-    options: {
-      // Options from http://docs.sequelizejs.com/manual/tutorial/models-definition.html
-    }
+    options: {}
   }
 }

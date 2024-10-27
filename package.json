@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Gilles Perreymond <gperreymond@gmail.com>",
   "dependencies": {
+    "lodash": "4.17.21",
     "moleculer": "0.14.34",
     "moleculer-db": "0.8.26",
     "moleculer-db-adapter-sequelize": "0.2.18",

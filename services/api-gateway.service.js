@@ -7,30 +7,32 @@ module.exports = {
   mixins: [WebService],
   settings: {
     port,
-    // Global CORS settings for all routes
     cors: {
-      // Configures the Access-Control-Allow-Origin CORS header.
       origin: '*',
-      // Configures the Access-Control-Allow-Methods CORS header.
       methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
-      // Configures the Access-Control-Allow-Headers CORS header.
       allowedHeaders: [],
-      // Configures the Access-Control-Expose-Headers CORS header.
       exposedHeaders: [],
-      // Configures the Access-Control-Allow-Credentials CORS header.
       credentials: false,
-      // Configures the Access-Control-Max-Age CORS header.
       maxAge: 3600
     },
     routes: [{
       path: '/api/v1',
       aliases: {
-        'GET projects': 'projects.list',
+        'GET projects': 'projects.find',
         'GET projects/:id': 'projects.get',
         'POST projects': 'projects.create',
         'PUT projects/:id': 'projects.update',
-        'DELETE projects/:id': 'projects.remove'
+        'DELETE projects/:id': 'projects.remove',
+        'GET walls': 'walls.find',
+        'GET walls/:id': 'walls.get',
+        'POST walls': 'walls.create',
+        'PUT walls/:id': 'walls.update',
+        'DELETE walls/:id': 'walls.remove'
       }
-    }]
+    }],
+    mappingPolicy: 'restrict',
+    bodyParsers: {
+      json: true
+    }
   }
 }

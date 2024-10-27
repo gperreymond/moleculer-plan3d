@@ -5,11 +5,12 @@ const Sequelize = require('sequelize')
 module.exports = {
   name: 'projects',
   mixins: [DbService],
-  adapter: new SqlAdapter('sqlite://:memory:'),
+  adapter: new SqlAdapter('sqlite://data.sqlite'),
+  rest: true,
   model: {
     name: 'project',
     define: {
-      title: {
+      name: {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false

@@ -21,6 +21,16 @@ module.exports = {
       credentials: false,
       // Configures the Access-Control-Max-Age CORS header.
       maxAge: 3600
-    }
+    },
+    routes: [{
+      path: '/api/v1',
+      aliases: {
+        'GET projects': 'projects.list',
+        'GET projects/:id': 'projects.get',
+        'POST projects': 'projects.create',
+        'PUT projects/:id': 'projects.update',
+        'DELETE projects/:id': 'projects.remove'
+      }
+    }]
   }
 }

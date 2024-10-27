@@ -1,0 +1,13 @@
+services:
+
+  nats:
+    image: 'nats:2.10.20'
+    networks:
+      - 'public'
+    ports:
+      - '4222:4222/tcp'
+
+networks:
+
+  public:
+    name: 'public'

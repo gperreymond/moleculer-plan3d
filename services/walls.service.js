@@ -7,8 +7,7 @@ module.exports = {
   mixins: [DbService],
   adapter: new SqlAdapter('sqlite://data.sqlite'),
   settings: {
-    idField: 'id',
-    fields: ['id', 'name', 'projectId']
+    idField: 'id'
   },
   model: {
     name: 'wall',
@@ -18,9 +17,47 @@ module.exports = {
         unique: true,
         allowNull: false
       },
+      type: {
+        type: DataTypes.STRING,
+        defaultValue: 'wall',
+        allowNull: false
+      },
       projectId: {
         type: DataTypes.INTEGER,
         allowNull: false
+      },
+      width: {
+        type: DataTypes.INTEGER,
+        defaultValue: 100,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      height: {
+        type: DataTypes.INTEGER,
+        defaultValue: 100,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      thickness: {
+        type: DataTypes.INTEGER,
+        defaultValue: 10,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      color: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0xff0000,
+        validate: {
+          min: 0x000000,
+          max: 0xffffff
+        }
       }
     }
   }

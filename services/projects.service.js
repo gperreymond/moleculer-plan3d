@@ -9,7 +9,6 @@ module.exports = {
   adapter: new SqlAdapter('sqlite://data.sqlite'),
   settings: {
     idField: 'id',
-    fields: ['id', 'name', 'description', 'walls'],
     populates: {
       async walls (_, docs, __, ctx) {
         const walls = await ctx.broker.call('walls.find', { excludeFields: 'projectId' })

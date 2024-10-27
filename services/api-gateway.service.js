@@ -10,7 +10,9 @@ module.exports = {
     cors: {
       origin: '*',
       methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
-      allowedHeaders: [],
+      allowedHeaders: [
+        'content-type'
+      ],
       exposedHeaders: [],
       credentials: false,
       maxAge: 3600

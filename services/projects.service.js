@@ -11,9 +11,9 @@ module.exports = {
     idField: 'id',
     populates: {
       async walls (_, docs, __, ctx) {
-        const walls = await ctx.broker.call('walls.find', { excludeFields: 'projectId' })
+        const walls = await ctx.broker.call('walls.find')
         docs.map(doc => {
-          doc.walls = filter(walls, function (o) { return o.id === doc.id })
+          doc.walls = filter(walls, function (o) { return o.projectId === doc.id })
           return true
         })
         return true

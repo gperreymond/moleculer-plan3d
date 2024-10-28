@@ -36,7 +36,7 @@ module.exports = {
       },
       height: {
         type: DataTypes.INTEGER,
-        defaultValue: 100,
+        defaultValue: 50,
         allowNull: false,
         validate: {
           min: 0
@@ -44,11 +44,31 @@ module.exports = {
       },
       thickness: {
         type: DataTypes.INTEGER,
-        defaultValue: 10,
+        defaultValue: 20,
         allowNull: false,
         validate: {
           min: 0
         }
+      },
+      x: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false
+      },
+      y: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false
+      },
+      z: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false
+      },
+      flip: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
       },
       color: {
         type: DataTypes.INTEGER,

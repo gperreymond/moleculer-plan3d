@@ -3,14 +3,14 @@ const SqlAdapter = require('moleculer-db-adapter-sequelize')
 const { DataTypes } = require('sequelize')
 
 module.exports = {
-  name: 'walls',
+  name: 'horizontalFences',
   mixins: [DbService],
   adapter: new SqlAdapter('sqlite://data.sqlite'),
   settings: {
     idField: 'id'
   },
   model: {
-    name: 'wall',
+    name: 'horizontalFence',
     define: {
       name: {
         type: DataTypes.STRING,
@@ -21,7 +21,25 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      width: {
+      numberOfPosts: {
+        type: DataTypes.INTEGER,
+        defaultValue: 2,
+        allowNull: false
+      },
+      numberOfRails: {
+        type: DataTypes.INTEGER,
+        defaultValue: 2,
+        allowNull: false
+      },
+      postWidth: {
+        type: DataTypes.INTEGER,
+        defaultValue: 10,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      postHeight: {
         type: DataTypes.INTEGER,
         defaultValue: 100,
         allowNull: false,
@@ -29,17 +47,33 @@ module.exports = {
           min: 0
         }
       },
-      height: {
+      postThickness: {
         type: DataTypes.INTEGER,
-        defaultValue: 50,
+        defaultValue: 20,
         allowNull: false,
         validate: {
           min: 0
         }
       },
-      thickness: {
+      railWidth: {
+        type: DataTypes.INTEGER,
+        defaultValue: 200,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      railHeight: {
         type: DataTypes.INTEGER,
         defaultValue: 20,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      railThickness: {
+        type: DataTypes.INTEGER,
+        defaultValue: 5,
         allowNull: false,
         validate: {
           min: 0
@@ -65,10 +99,19 @@ module.exports = {
         defaultValue: false,
         allowNull: false
       },
-      color: {
+      postColor: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0xff0000,
+        validate: {
+          min: 0x000000,
+          max: 0xffffff
+        }
+      },
+      railColor: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0xff00ff,
         validate: {
           min: 0x000000,
           max: 0xffffff

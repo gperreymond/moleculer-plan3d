@@ -7,6 +7,17 @@ services:
     ports:
       - '4222:4222/tcp'
 
+  sqlite-web:
+    image: 'coleifer/sqlite-web:latest'
+    environment:
+      SQLITE_DATABASE: 'data.sqlite'
+    volumes:
+      - './data.sqlite:/data/data.sqlite'
+    networks:
+      - 'public'
+    ports:
+      - '8080:8080/tcp'
+
 networks:
 
   public:

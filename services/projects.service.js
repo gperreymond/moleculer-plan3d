@@ -11,9 +11,17 @@ module.exports = {
     idField: 'id',
     populates: {
       async walls (_, docs, __, ctx) {
-        const walls = await ctx.broker.call('walls.find')
+        const items = await ctx.broker.call('walls.find')
         docs.map(doc => {
-          doc.walls = filter(walls, function (o) { return o.projectId === doc.id })
+          doc.walls = filter(items, function (o) { return o.projectId === doc.id })
+          return true
+        })
+        return true
+      },
+      async horizontalFences (_, docs, __, ctx) {
+        const items = await ctx.broker.call('horizontalFences.find')
+        docs.map(doc => {
+          doc.horizontalFences = filter(items, function (o) { return o.projectId === doc.id })
           return true
         })
         return true

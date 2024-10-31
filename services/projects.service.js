@@ -18,6 +18,14 @@ module.exports = {
         })
         return true
       },
+      async grounds (_, docs, __, ctx) {
+        const items = await ctx.broker.call('grounds.find')
+        docs.map(doc => {
+          doc.grounds = filter(items, function (o) { return o.projectId === doc.id })
+          return true
+        })
+        return true
+      },
       async horizontalFences (_, docs, __, ctx) {
         const items = await ctx.broker.call('horizontalFences.find')
         docs.map(doc => {

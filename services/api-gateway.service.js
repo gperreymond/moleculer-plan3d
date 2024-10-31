@@ -34,7 +34,12 @@ module.exports = {
         'GET horizontalFences/:id': 'horizontalFences.get',
         'POST horizontalFences': 'horizontalFences.create',
         'PUT horizontalFences/:id': 'horizontalFences.update',
-        'DELETE horizontalFences/:id': 'horizontalFences.remove'
+        'DELETE horizontalFences/:id': 'horizontalFences.remove',
+        'GET grounds': 'grounds.find',
+        'GET grounds/:id': 'grounds.get',
+        'POST grounds': 'grounds.create',
+        'PUT grounds/:id': 'grounds.update',
+        'DELETE grounds/:id': 'grounds.remove'
       }
     }],
     mappingPolicy: 'restrict',

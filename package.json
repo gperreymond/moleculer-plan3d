@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "moleculer-repl": "0.7.4",
-    "npm-check-updates": "17.1.6",
+    "npm-check-updates": "17.1.9",
     "standard": "17.1.2"
   },
   "scripts": {

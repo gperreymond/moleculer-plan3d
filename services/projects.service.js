@@ -47,6 +47,14 @@ module.exports = {
       description: {
         type: DataTypes.TEXT,
         allowNull: true
+      },
+      width: {
+        type: DataTypes.INTEGER,
+        defaultValue: 200,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
       }
     },
     options: {}

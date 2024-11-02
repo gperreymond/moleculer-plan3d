@@ -39,7 +39,12 @@ module.exports = {
         'GET grounds/:id': 'grounds.get',
         'POST grounds': 'grounds.create',
         'PUT grounds/:id': 'grounds.update',
-        'DELETE grounds/:id': 'grounds.remove'
+        'DELETE grounds/:id': 'grounds.remove',
+        'GET blocks': 'blocks.find',
+        'GET blocks/:id': 'blocks.get',
+        'POST blocks': 'blocks.create',
+        'PUT blocks/:id': 'blocks.update',
+        'DELETE blocks/:id': 'blocks.remove'
       }
     }],
     mappingPolicy: 'restrict',

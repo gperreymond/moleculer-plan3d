@@ -18,6 +18,14 @@ module.exports = {
         })
         return true
       },
+      async boxes (_, docs, __, ctx) {
+        const items = await ctx.broker.call('boxes.find')
+        docs.map(doc => {
+          doc.boxes = filter(items, function (o) { return o.projectId === doc.id })
+          return true
+        })
+        return true
+      },
       async blocks (_, docs, __, ctx) {
         const items = await ctx.broker.call('blocks.find')
         docs.map(doc => {

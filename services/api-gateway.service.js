@@ -44,7 +44,12 @@ module.exports = {
         'GET blocks/:id': 'blocks.get',
         'POST blocks': 'blocks.create',
         'PUT blocks/:id': 'blocks.update',
-        'DELETE blocks/:id': 'blocks.remove'
+        'DELETE blocks/:id': 'blocks.remove',
+        'GET boxes': 'boxes.find',
+        'GET boxes/:id': 'boxes.get',
+        'POST boxes': 'boxes.create',
+        'PUT boxes/:id': 'boxes.update',
+        'DELETE boxes/:id': 'boxes.remove'
       }
     }],
     mappingPolicy: 'restrict',

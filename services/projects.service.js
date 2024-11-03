@@ -11,7 +11,7 @@ module.exports = {
     idField: 'id',
     populates: {
       async walls (_, docs, __, ctx) {
-        const items = await ctx.broker.call('walls.find')
+        const items = await ctx.broker.call('walls.find', { sort: 'name' })
         docs.map(doc => {
           doc.walls = filter(items, function (o) { return o.projectId === doc.id })
           return true
@@ -35,7 +35,7 @@ module.exports = {
         return true
       },
       async grounds (_, docs, __, ctx) {
-        const items = await ctx.broker.call('grounds.find')
+        const items = await ctx.broker.call('grounds.find', { sort: 'name' })
         docs.map(doc => {
           doc.grounds = filter(items, function (o) { return o.projectId === doc.id })
           return true

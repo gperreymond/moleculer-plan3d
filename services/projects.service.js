@@ -19,7 +19,7 @@ module.exports = {
         return true
       },
       async boxes (_, docs, __, ctx) {
-        const items = await ctx.broker.call('boxes.find')
+        const items = await ctx.broker.call('boxes.find', { sort: 'name' })
         docs.map(doc => {
           doc.boxes = filter(items, function (o) { return o.projectId === doc.id })
           return true
@@ -27,7 +27,7 @@ module.exports = {
         return true
       },
       async blocks (_, docs, __, ctx) {
-        const items = await ctx.broker.call('blocks.find')
+        const items = await ctx.broker.call('blocks.find', { sort: 'name' })
         docs.map(doc => {
           doc.blocks = filter(items, function (o) { return o.projectId === doc.id })
           return true
@@ -43,7 +43,7 @@ module.exports = {
         return true
       },
       async horizontalFences (_, docs, __, ctx) {
-        const items = await ctx.broker.call('horizontalFences.find')
+        const items = await ctx.broker.call('horizontalFences.find', { sort: 'name' })
         docs.map(doc => {
           doc.horizontalFences = filter(items, function (o) { return o.projectId === doc.id })
           return true

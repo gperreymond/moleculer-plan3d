@@ -37,7 +37,15 @@ module.exports = {
           min: 0
         }
       },
-      thickness: {
+      wallHeight: {
+        type: DataTypes.INTEGER,
+        defaultValue: 100,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      wallThickness: {
         type: DataTypes.INTEGER,
         defaultValue: 20,
         allowNull: false,

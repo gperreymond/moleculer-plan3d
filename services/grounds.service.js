@@ -52,6 +52,10 @@ module.exports = {
         defaultValue: 0,
         allowNull: false
       },
+      texture: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
       color: {
         type: DataTypes.INTEGER,
         allowNull: false,

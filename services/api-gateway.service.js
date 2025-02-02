@@ -49,7 +49,12 @@ module.exports = {
         'GET boxes/:id': 'boxes.get',
         'POST boxes': 'boxes.create',
         'PUT boxes/:id': 'boxes.update',
-        'DELETE boxes/:id': 'boxes.remove'
+        'DELETE boxes/:id': 'boxes.remove',
+        'GET pergolas': 'pergolas.find',
+        'GET pergolas/:id': 'pergolas.get',
+        'POST pergolas': 'pergolas.create',
+        'PUT pergolas/:id': 'pergolas.update',
+        'DELETE pergolas/:id': 'pergolas.remove'
       }
     }],
     mappingPolicy: 'restrict',

@@ -10,6 +10,14 @@ module.exports = {
   settings: {
     idField: 'id',
     populates: {
+      async pergolas (_, docs, __, ctx) {
+        const items = await ctx.broker.call('pergolas.find', { sort: 'name' })
+        docs.map(doc => {
+          doc.pergolas = filter(items, function (o) { return o.projectId === doc.id })
+          return true
+        })
+        return true
+      },
       async walls (_, docs, __, ctx) {
         const items = await ctx.broker.call('walls.find', { sort: 'name' })
         docs.map(doc => {
